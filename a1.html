@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <style type="text/css">
+        body,html,#container{
+            height: 100%;
+            margin: 0px;
+            font: 12px Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial;
+        }
+        .title{
+            margin: 0px;
+            color: white;
+            font-size: 14px;
+            background-color: rgba(0,155,255,0.8);
+            line-height: 22px;
+            padding: 0px 0 0 6px;
+            font-weight: lighter;
+            letter-spacing: 1px;
+        }
+        .content{
+            padding: 4px;
+            color: #666;
+            line-height: 18px;
+        }
+        .amap-info-content{
+            padding: 0 0 2px 0px;
+        }
+        #container{
+            height: 94% !important;
+        }
+    </style>
+    <title>高德地图</title>
+
+</head>
+<body>
+<h1>
+    会议地址：
+</h1>
+<h5>
+    河北世纪大饭店
+</h5>
+
+<div id="container" tabindex="0"></div>
+<div style="margin-top: 10px;height: 10px;background-color: #ff2b6e;">
+
+</div>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.2&key=67bdb56a7acf8ef801db1e5454d976f9"></script>
+<script type="text/javascript">
+    var map = new AMap.Map('container',{
+        resizeEnable: true,
+        zoom: 10,
+        center: [114.476589,38.043982]
+    });
+    var marker = new AMap.Marker({
+        position: [114.476589,38.043982]
+    });
+    marker.setMap(map);
+    var circle = new AMap.Circle({
+        center: [114.476589,38.043982],
+        redius: 100,
+        fillOpacity:0.1,
+        fillColor:'#09f',
+        strokeColor:'#09f',
+        strokeWeight:1
+    })
+    circle.setMap(map);
+    map.setFitView()
+    var info = new AMap.InfoWindow({
+        content: '<div class="title">河北世纪大饭店</div><div class="content">'+
+        '中山西路145号<br/>',
+        offset:new AMap.Pixel(0,-28),
+        size:new AMap.Size(200,0)
+    })
+    info.open(map,marker.getPosition())
+</script>
+<script type="text/javascript" src="https://webapi.amap.com/demos/js/liteToolbar.js"></script>
+</body>
+</html>
